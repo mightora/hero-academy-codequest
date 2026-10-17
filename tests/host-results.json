@@ -1,0 +1,19 @@
+{
+  "checks": 7,
+  "results": [
+    {
+      "language": "python",
+      "stopAndDisposalMs": 201,
+      "hostResponsive": true,
+      "runAndOutputValidated": true
+    },
+    {
+      "language": "csharp",
+      "stopAndDisposalMs": 200,
+      "hostResponsive": true,
+      "runAndOutputValidated": true
+    }
+  ],
+  "watchdogMs": 5254,
+  "environment": "Node adapters execute real host, opaque-frame bootstrap, browser-branch workers; no actual browser CSP or device claims"
+}

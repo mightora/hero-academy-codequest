@@ -1,0 +1,976 @@
+{
+  "python": [
+    {
+      "name": "world.js",
+      "path": "./world.js",
+      "size": 7895
+    },
+    {
+      "name": "pyodide.mjs",
+      "path": "./runtimes/python/pyodide.mjs",
+      "size": 17931
+    },
+    {
+      "name": "pyodide.asm.mjs",
+      "path": "./runtimes/python/pyodide.asm.mjs",
+      "size": 1250344
+    },
+    {
+      "name": "pyodide.asm.wasm",
+      "path": "./runtimes/python/pyodide.asm.wasm",
+      "size": 9598218
+    },
+    {
+      "name": "python_stdlib.zip",
+      "path": "./runtimes/python/python_stdlib.zip",
+      "size": 2545637
+    },
+    {
+      "name": "pyodide-lock.json",
+      "path": "./runtimes/python/pyodide-lock.json",
+      "size": 119077
+    },
+    {
+      "name": "python-runner.py",
+      "path": "./python-runner.py",
+      "size": 4211
+    }
+  ],
+  "csharp": [
+    {
+      "name": "world.js",
+      "path": "./world.js",
+      "size": 7895
+    },
+    {
+      "name": "CodeQuest.Runtime.dll",
+      "path": "./runtimes/csharp/CodeQuest.Runtime.dll",
+      "size": 23040
+    },
+    {
+      "name": "Microsoft.CSharp.dll",
+      "path": "./runtimes/csharp/Microsoft.CSharp.dll",
+      "size": 311592
+    },
+    {
+      "name": "Microsoft.CodeAnalysis.CSharp.dll",
+      "path": "./runtimes/csharp/Microsoft.CodeAnalysis.CSharp.dll",
+      "size": 6697768
+    },
+    {
+      "name": "Microsoft.CodeAnalysis.dll",
+      "path": "./runtimes/csharp/Microsoft.CodeAnalysis.dll",
+      "size": 3029800
+    },
+    {
+      "name": "Microsoft.VisualBasic.Core.dll",
+      "path": "./runtimes/csharp/Microsoft.VisualBasic.Core.dll",
+      "size": 428832
+    },
+    {
+      "name": "Microsoft.VisualBasic.dll",
+      "path": "./runtimes/csharp/Microsoft.VisualBasic.dll",
+      "size": 17192
+    },
+    {
+      "name": "Microsoft.Win32.Primitives.dll",
+      "path": "./runtimes/csharp/Microsoft.Win32.Primitives.dll",
+      "size": 15656
+    },
+    {
+      "name": "Microsoft.Win32.Registry.dll",
+      "path": "./runtimes/csharp/Microsoft.Win32.Registry.dll",
+      "size": 33104
+    },
+    {
+      "name": "System.AppContext.dll",
+      "path": "./runtimes/csharp/System.AppContext.dll",
+      "size": 15144
+    },
+    {
+      "name": "System.Buffers.dll",
+      "path": "./runtimes/csharp/System.Buffers.dll",
+      "size": 15184
+    },
+    {
+      "name": "System.Collections.Concurrent.dll",
+      "path": "./runtimes/csharp/System.Collections.Concurrent.dll",
+      "size": 88872
+    },
+    {
+      "name": "System.Collections.Immutable.dll",
+      "path": "./runtimes/csharp/System.Collections.Immutable.dll",
+      "size": 251216
+    },
+    {
+      "name": "System.Collections.NonGeneric.dll",
+      "path": "./runtimes/csharp/System.Collections.NonGeneric.dll",
+      "size": 47952
+    },
+    {
+      "name": "System.Collections.Specialized.dll",
+      "path": "./runtimes/csharp/System.Collections.Specialized.dll",
+      "size": 47912
+    },
+    {
+      "name": "System.Collections.dll",
+      "path": "./runtimes/csharp/System.Collections.dll",
+      "size": 112936
+    },
+    {
+      "name": "System.ComponentModel.Annotations.dll",
+      "path": "./runtimes/csharp/System.ComponentModel.Annotations.dll",
+      "size": 102696
+    },
+    {
+      "name": "System.ComponentModel.DataAnnotations.dll",
+      "path": "./runtimes/csharp/System.ComponentModel.DataAnnotations.dll",
+      "size": 16720
+    },
+    {
+      "name": "System.ComponentModel.EventBasedAsync.dll",
+      "path": "./runtimes/csharp/System.ComponentModel.EventBasedAsync.dll",
+      "size": 26408
+    },
+    {
+      "name": "System.ComponentModel.Primitives.dll",
+      "path": "./runtimes/csharp/System.ComponentModel.Primitives.dll",
+      "size": 42280
+    },
+    {
+      "name": "System.ComponentModel.TypeConverter.dll",
+      "path": "./runtimes/csharp/System.ComponentModel.TypeConverter.dll",
+      "size": 316712
+    },
+    {
+      "name": "System.ComponentModel.dll",
+      "path": "./runtimes/csharp/System.ComponentModel.dll",
+      "size": 16168
+    },
+    {
+      "name": "System.Configuration.dll",
+      "path": "./runtimes/csharp/System.Configuration.dll",
+      "size": 19280
+    },
+    {
+      "name": "System.Console.dll",
+      "path": "./runtimes/csharp/System.Console.dll",
+      "size": 54056
+    },
+    {
+      "name": "System.Core.dll",
+      "path": "./runtimes/csharp/System.Core.dll",
+      "size": 23376
+    },
+    {
+      "name": "System.Data.Common.dll",
+      "path": "./runtimes/csharp/System.Data.Common.dll",
+      "size": 1018152
+    },
+    {
+      "name": "System.Data.DataSetExtensions.dll",
+      "path": "./runtimes/csharp/System.Data.DataSetExtensions.dll",
+      "size": 15696
+    },
+    {
+      "name": "System.Data.dll",
+      "path": "./runtimes/csharp/System.Data.dll",
+      "size": 25384
+    },
+    {
+      "name": "System.Diagnostics.Contracts.dll",
+      "path": "./runtimes/csharp/System.Diagnostics.Contracts.dll",
+      "size": 16208
+    },
+    {
+      "name": "System.Diagnostics.Debug.dll",
+      "path": "./runtimes/csharp/System.Diagnostics.Debug.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Diagnostics.DiagnosticSource.dll",
+      "path": "./runtimes/csharp/System.Diagnostics.DiagnosticSource.dll",
+      "size": 202536
+    },
+    {
+      "name": "System.Diagnostics.FileVersionInfo.dll",
+      "path": "./runtimes/csharp/System.Diagnostics.FileVersionInfo.dll",
+      "size": 22824
+    },
+    {
+      "name": "System.Diagnostics.Process.dll",
+      "path": "./runtimes/csharp/System.Diagnostics.Process.dll",
+      "size": 56616
+    },
+    {
+      "name": "System.Diagnostics.StackTrace.dll",
+      "path": "./runtimes/csharp/System.Diagnostics.StackTrace.dll",
+      "size": 25896
+    },
+    {
+      "name": "System.Diagnostics.TextWriterTraceListener.dll",
+      "path": "./runtimes/csharp/System.Diagnostics.TextWriterTraceListener.dll",
+      "size": 31528
+    },
+    {
+      "name": "System.Diagnostics.Tools.dll",
+      "path": "./runtimes/csharp/System.Diagnostics.Tools.dll",
+      "size": 15184
+    },
+    {
+      "name": "System.Diagnostics.TraceSource.dll",
+      "path": "./runtimes/csharp/System.Diagnostics.TraceSource.dll",
+      "size": 58664
+    },
+    {
+      "name": "System.Diagnostics.Tracing.dll",
+      "path": "./runtimes/csharp/System.Diagnostics.Tracing.dll",
+      "size": 16208
+    },
+    {
+      "name": "System.Drawing.Primitives.dll",
+      "path": "./runtimes/csharp/System.Drawing.Primitives.dll",
+      "size": 64808
+    },
+    {
+      "name": "System.Drawing.dll",
+      "path": "./runtimes/csharp/System.Drawing.dll",
+      "size": 20264
+    },
+    {
+      "name": "System.Dynamic.Runtime.dll",
+      "path": "./runtimes/csharp/System.Dynamic.Runtime.dll",
+      "size": 16208
+    },
+    {
+      "name": "System.Formats.Asn1.dll",
+      "path": "./runtimes/csharp/System.Formats.Asn1.dll",
+      "size": 97104
+    },
+    {
+      "name": "System.Formats.Tar.dll",
+      "path": "./runtimes/csharp/System.Formats.Tar.dll",
+      "size": 39208
+    },
+    {
+      "name": "System.Globalization.Calendars.dll",
+      "path": "./runtimes/csharp/System.Globalization.Calendars.dll",
+      "size": 15696
+    },
+    {
+      "name": "System.Globalization.Extensions.dll",
+      "path": "./runtimes/csharp/System.Globalization.Extensions.dll",
+      "size": 15144
+    },
+    {
+      "name": "System.Globalization.dll",
+      "path": "./runtimes/csharp/System.Globalization.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.IO.Compression.Brotli.dll",
+      "path": "./runtimes/csharp/System.IO.Compression.Brotli.dll",
+      "size": 28496
+    },
+    {
+      "name": "System.IO.Compression.FileSystem.dll",
+      "path": "./runtimes/csharp/System.IO.Compression.FileSystem.dll",
+      "size": 15144
+    },
+    {
+      "name": "System.IO.Compression.ZipFile.dll",
+      "path": "./runtimes/csharp/System.IO.Compression.ZipFile.dll",
+      "size": 53584
+    },
+    {
+      "name": "System.IO.Compression.dll",
+      "path": "./runtimes/csharp/System.IO.Compression.dll",
+      "size": 167720
+    },
+    {
+      "name": "System.IO.FileSystem.AccessControl.dll",
+      "path": "./runtimes/csharp/System.IO.FileSystem.AccessControl.dll",
+      "size": 32080
+    },
+    {
+      "name": "System.IO.FileSystem.DriveInfo.dll",
+      "path": "./runtimes/csharp/System.IO.FileSystem.DriveInfo.dll",
+      "size": 23848
+    },
+    {
+      "name": "System.IO.FileSystem.Primitives.dll",
+      "path": "./runtimes/csharp/System.IO.FileSystem.Primitives.dll",
+      "size": 15144
+    },
+    {
+      "name": "System.IO.FileSystem.Watcher.dll",
+      "path": "./runtimes/csharp/System.IO.FileSystem.Watcher.dll",
+      "size": 33064
+    },
+    {
+      "name": "System.IO.FileSystem.dll",
+      "path": "./runtimes/csharp/System.IO.FileSystem.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.IO.IsolatedStorage.dll",
+      "path": "./runtimes/csharp/System.IO.IsolatedStorage.dll",
+      "size": 35152
+    },
+    {
+      "name": "System.IO.MemoryMappedFiles.dll",
+      "path": "./runtimes/csharp/System.IO.MemoryMappedFiles.dll",
+      "size": 50000
+    },
+    {
+      "name": "System.IO.Pipelines.dll",
+      "path": "./runtimes/csharp/System.IO.Pipelines.dll",
+      "size": 78120
+    },
+    {
+      "name": "System.IO.Pipes.AccessControl.dll",
+      "path": "./runtimes/csharp/System.IO.Pipes.AccessControl.dll",
+      "size": 23336
+    },
+    {
+      "name": "System.IO.Pipes.dll",
+      "path": "./runtimes/csharp/System.IO.Pipes.dll",
+      "size": 42320
+    },
+    {
+      "name": "System.IO.UnmanagedMemoryStream.dll",
+      "path": "./runtimes/csharp/System.IO.UnmanagedMemoryStream.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.IO.dll",
+      "path": "./runtimes/csharp/System.IO.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Linq.AsyncEnumerable.dll",
+      "path": "./runtimes/csharp/System.Linq.AsyncEnumerable.dll",
+      "size": 456488
+    },
+    {
+      "name": "System.Linq.Expressions.dll",
+      "path": "./runtimes/csharp/System.Linq.Expressions.dll",
+      "size": 575312
+    },
+    {
+      "name": "System.Linq.Parallel.dll",
+      "path": "./runtimes/csharp/System.Linq.Parallel.dll",
+      "size": 223016
+    },
+    {
+      "name": "System.Linq.Queryable.dll",
+      "path": "./runtimes/csharp/System.Linq.Queryable.dll",
+      "size": 78632
+    },
+    {
+      "name": "System.Linq.dll",
+      "path": "./runtimes/csharp/System.Linq.dll",
+      "size": 201000
+    },
+    {
+      "name": "System.Memory.dll",
+      "path": "./runtimes/csharp/System.Memory.dll",
+      "size": 55592
+    },
+    {
+      "name": "System.Net.Http.Json.dll",
+      "path": "./runtimes/csharp/System.Net.Http.Json.dll",
+      "size": 56104
+    },
+    {
+      "name": "System.Net.Http.dll",
+      "path": "./runtimes/csharp/System.Net.Http.dll",
+      "size": 296744
+    },
+    {
+      "name": "System.Net.HttpListener.dll",
+      "path": "./runtimes/csharp/System.Net.HttpListener.dll",
+      "size": 56144
+    },
+    {
+      "name": "System.Net.Mail.dll",
+      "path": "./runtimes/csharp/System.Net.Mail.dll",
+      "size": 105256
+    },
+    {
+      "name": "System.Net.NameResolution.dll",
+      "path": "./runtimes/csharp/System.Net.NameResolution.dll",
+      "size": 24360
+    },
+    {
+      "name": "System.Net.NetworkInformation.dll",
+      "path": "./runtimes/csharp/System.Net.NetworkInformation.dll",
+      "size": 42280
+    },
+    {
+      "name": "System.Net.Ping.dll",
+      "path": "./runtimes/csharp/System.Net.Ping.dll",
+      "size": 27944
+    },
+    {
+      "name": "System.Net.Primitives.dll",
+      "path": "./runtimes/csharp/System.Net.Primitives.dll",
+      "size": 107304
+    },
+    {
+      "name": "System.Net.Quic.dll",
+      "path": "./runtimes/csharp/System.Net.Quic.dll",
+      "size": 39208
+    },
+    {
+      "name": "System.Net.Requests.dll",
+      "path": "./runtimes/csharp/System.Net.Requests.dll",
+      "size": 65872
+    },
+    {
+      "name": "System.Net.Security.dll",
+      "path": "./runtimes/csharp/System.Net.Security.dll",
+      "size": 114472
+    },
+    {
+      "name": "System.Net.ServerSentEvents.dll",
+      "path": "./runtimes/csharp/System.Net.ServerSentEvents.dll",
+      "size": 40784
+    },
+    {
+      "name": "System.Net.ServicePoint.dll",
+      "path": "./runtimes/csharp/System.Net.ServicePoint.dll",
+      "size": 15144
+    },
+    {
+      "name": "System.Net.Sockets.dll",
+      "path": "./runtimes/csharp/System.Net.Sockets.dll",
+      "size": 74536
+    },
+    {
+      "name": "System.Net.WebClient.dll",
+      "path": "./runtimes/csharp/System.Net.WebClient.dll",
+      "size": 56104
+    },
+    {
+      "name": "System.Net.WebHeaderCollection.dll",
+      "path": "./runtimes/csharp/System.Net.WebHeaderCollection.dll",
+      "size": 33104
+    },
+    {
+      "name": "System.Net.WebProxy.dll",
+      "path": "./runtimes/csharp/System.Net.WebProxy.dll",
+      "size": 21800
+    },
+    {
+      "name": "System.Net.WebSockets.Client.dll",
+      "path": "./runtimes/csharp/System.Net.WebSockets.Client.dll",
+      "size": 52520
+    },
+    {
+      "name": "System.Net.WebSockets.dll",
+      "path": "./runtimes/csharp/System.Net.WebSockets.dll",
+      "size": 109392
+    },
+    {
+      "name": "System.Net.dll",
+      "path": "./runtimes/csharp/System.Net.dll",
+      "size": 17192
+    },
+    {
+      "name": "System.Numerics.Vectors.dll",
+      "path": "./runtimes/csharp/System.Numerics.Vectors.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Numerics.dll",
+      "path": "./runtimes/csharp/System.Numerics.dll",
+      "size": 15144
+    },
+    {
+      "name": "System.ObjectModel.dll",
+      "path": "./runtimes/csharp/System.ObjectModel.dll",
+      "size": 41256
+    },
+    {
+      "name": "System.Private.CoreLib.dll",
+      "path": "./runtimes/csharp/System.Private.CoreLib.dll",
+      "size": 4880680
+    },
+    {
+      "name": "System.Private.DataContractSerialization.dll",
+      "path": "./runtimes/csharp/System.Private.DataContractSerialization.dll",
+      "size": 859472
+    },
+    {
+      "name": "System.Private.Uri.dll",
+      "path": "./runtimes/csharp/System.Private.Uri.dll",
+      "size": 105768
+    },
+    {
+      "name": "System.Private.Xml.Linq.dll",
+      "path": "./runtimes/csharp/System.Private.Xml.Linq.dll",
+      "size": 153936
+    },
+    {
+      "name": "System.Private.Xml.dll",
+      "path": "./runtimes/csharp/System.Private.Xml.dll",
+      "size": 3107112
+    },
+    {
+      "name": "System.Reflection.DispatchProxy.dll",
+      "path": "./runtimes/csharp/System.Reflection.DispatchProxy.dll",
+      "size": 38184
+    },
+    {
+      "name": "System.Reflection.Emit.ILGeneration.dll",
+      "path": "./runtimes/csharp/System.Reflection.Emit.ILGeneration.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Reflection.Emit.Lightweight.dll",
+      "path": "./runtimes/csharp/System.Reflection.Emit.Lightweight.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Reflection.Emit.dll",
+      "path": "./runtimes/csharp/System.Reflection.Emit.dll",
+      "size": 133416
+    },
+    {
+      "name": "System.Reflection.Extensions.dll",
+      "path": "./runtimes/csharp/System.Reflection.Extensions.dll",
+      "size": 15184
+    },
+    {
+      "name": "System.Reflection.Metadata.dll",
+      "path": "./runtimes/csharp/System.Reflection.Metadata.dll",
+      "size": 503632
+    },
+    {
+      "name": "System.Reflection.Primitives.dll",
+      "path": "./runtimes/csharp/System.Reflection.Primitives.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Reflection.TypeExtensions.dll",
+      "path": "./runtimes/csharp/System.Reflection.TypeExtensions.dll",
+      "size": 24400
+    },
+    {
+      "name": "System.Reflection.dll",
+      "path": "./runtimes/csharp/System.Reflection.dll",
+      "size": 16208
+    },
+    {
+      "name": "System.Resources.Reader.dll",
+      "path": "./runtimes/csharp/System.Resources.Reader.dll",
+      "size": 15144
+    },
+    {
+      "name": "System.Resources.ResourceManager.dll",
+      "path": "./runtimes/csharp/System.Resources.ResourceManager.dll",
+      "size": 15696
+    },
+    {
+      "name": "System.Resources.Writer.dll",
+      "path": "./runtimes/csharp/System.Resources.Writer.dll",
+      "size": 26920
+    },
+    {
+      "name": "System.Runtime.CompilerServices.Unsafe.dll",
+      "path": "./runtimes/csharp/System.Runtime.CompilerServices.Unsafe.dll",
+      "size": 15144
+    },
+    {
+      "name": "System.Runtime.CompilerServices.VisualC.dll",
+      "path": "./runtimes/csharp/System.Runtime.CompilerServices.VisualC.dll",
+      "size": 17232
+    },
+    {
+      "name": "System.Runtime.Extensions.dll",
+      "path": "./runtimes/csharp/System.Runtime.Extensions.dll",
+      "size": 17744
+    },
+    {
+      "name": "System.Runtime.Handles.dll",
+      "path": "./runtimes/csharp/System.Runtime.Handles.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Runtime.InteropServices.JavaScript.dll",
+      "path": "./runtimes/csharp/System.Runtime.InteropServices.JavaScript.dll",
+      "size": 89896
+    },
+    {
+      "name": "System.Runtime.InteropServices.RuntimeInformation.dll",
+      "path": "./runtimes/csharp/System.Runtime.InteropServices.RuntimeInformation.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Runtime.InteropServices.dll",
+      "path": "./runtimes/csharp/System.Runtime.InteropServices.dll",
+      "size": 64848
+    },
+    {
+      "name": "System.Runtime.Intrinsics.dll",
+      "path": "./runtimes/csharp/System.Runtime.Intrinsics.dll",
+      "size": 17192
+    },
+    {
+      "name": "System.Runtime.Loader.dll",
+      "path": "./runtimes/csharp/System.Runtime.Loader.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Runtime.Numerics.dll",
+      "path": "./runtimes/csharp/System.Runtime.Numerics.dll",
+      "size": 145232
+    },
+    {
+      "name": "System.Runtime.Serialization.Formatters.dll",
+      "path": "./runtimes/csharp/System.Runtime.Serialization.Formatters.dll",
+      "size": 65832
+    },
+    {
+      "name": "System.Runtime.Serialization.Json.dll",
+      "path": "./runtimes/csharp/System.Runtime.Serialization.Json.dll",
+      "size": 15696
+    },
+    {
+      "name": "System.Runtime.Serialization.Primitives.dll",
+      "path": "./runtimes/csharp/System.Runtime.Serialization.Primitives.dll",
+      "size": 23336
+    },
+    {
+      "name": "System.Runtime.Serialization.Xml.dll",
+      "path": "./runtimes/csharp/System.Runtime.Serialization.Xml.dll",
+      "size": 16680
+    },
+    {
+      "name": "System.Runtime.Serialization.dll",
+      "path": "./runtimes/csharp/System.Runtime.Serialization.dll",
+      "size": 17232
+    },
+    {
+      "name": "System.Runtime.dll",
+      "path": "./runtimes/csharp/System.Runtime.dll",
+      "size": 44880
+    },
+    {
+      "name": "System.Security.AccessControl.dll",
+      "path": "./runtimes/csharp/System.Security.AccessControl.dll",
+      "size": 58152
+    },
+    {
+      "name": "System.Security.Claims.dll",
+      "path": "./runtimes/csharp/System.Security.Claims.dll",
+      "size": 55080
+    },
+    {
+      "name": "System.Security.Cryptography.Algorithms.dll",
+      "path": "./runtimes/csharp/System.Security.Cryptography.Algorithms.dll",
+      "size": 17192
+    },
+    {
+      "name": "System.Security.Cryptography.Cng.dll",
+      "path": "./runtimes/csharp/System.Security.Cryptography.Cng.dll",
+      "size": 16208
+    },
+    {
+      "name": "System.Security.Cryptography.Csp.dll",
+      "path": "./runtimes/csharp/System.Security.Cryptography.Csp.dll",
+      "size": 16168
+    },
+    {
+      "name": "System.Security.Cryptography.Encoding.dll",
+      "path": "./runtimes/csharp/System.Security.Cryptography.Encoding.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Security.Cryptography.OpenSsl.dll",
+      "path": "./runtimes/csharp/System.Security.Cryptography.OpenSsl.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Security.Cryptography.Primitives.dll",
+      "path": "./runtimes/csharp/System.Security.Cryptography.Primitives.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Security.Cryptography.X509Certificates.dll",
+      "path": "./runtimes/csharp/System.Security.Cryptography.X509Certificates.dll",
+      "size": 16680
+    },
+    {
+      "name": "System.Security.Cryptography.dll",
+      "path": "./runtimes/csharp/System.Security.Cryptography.dll",
+      "size": 654120
+    },
+    {
+      "name": "System.Security.Principal.Windows.dll",
+      "path": "./runtimes/csharp/System.Security.Principal.Windows.dll",
+      "size": 37672
+    },
+    {
+      "name": "System.Security.Principal.dll",
+      "path": "./runtimes/csharp/System.Security.Principal.dll",
+      "size": 15184
+    },
+    {
+      "name": "System.Security.SecureString.dll",
+      "path": "./runtimes/csharp/System.Security.SecureString.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Security.dll",
+      "path": "./runtimes/csharp/System.Security.dll",
+      "size": 18216
+    },
+    {
+      "name": "System.ServiceModel.Web.dll",
+      "path": "./runtimes/csharp/System.ServiceModel.Web.dll",
+      "size": 16680
+    },
+    {
+      "name": "System.ServiceProcess.dll",
+      "path": "./runtimes/csharp/System.ServiceProcess.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Text.Encoding.CodePages.dll",
+      "path": "./runtimes/csharp/System.Text.Encoding.CodePages.dll",
+      "size": 742696
+    },
+    {
+      "name": "System.Text.Encoding.Extensions.dll",
+      "path": "./runtimes/csharp/System.Text.Encoding.Extensions.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Text.Encoding.dll",
+      "path": "./runtimes/csharp/System.Text.Encoding.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Text.Encodings.Web.dll",
+      "path": "./runtimes/csharp/System.Text.Encodings.Web.dll",
+      "size": 65872
+    },
+    {
+      "name": "System.Text.Json.dll",
+      "path": "./runtimes/csharp/System.Text.Json.dll",
+      "size": 649000
+    },
+    {
+      "name": "System.Text.RegularExpressions.dll",
+      "path": "./runtimes/csharp/System.Text.RegularExpressions.dll",
+      "size": 384808
+    },
+    {
+      "name": "System.Threading.AccessControl.dll",
+      "path": "./runtimes/csharp/System.Threading.AccessControl.dll",
+      "size": 33576
+    },
+    {
+      "name": "System.Threading.Channels.dll",
+      "path": "./runtimes/csharp/System.Threading.Channels.dll",
+      "size": 66344
+    },
+    {
+      "name": "System.Threading.Overlapped.dll",
+      "path": "./runtimes/csharp/System.Threading.Overlapped.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Threading.Tasks.Dataflow.dll",
+      "path": "./runtimes/csharp/System.Threading.Tasks.Dataflow.dll",
+      "size": 185640
+    },
+    {
+      "name": "System.Threading.Tasks.Extensions.dll",
+      "path": "./runtimes/csharp/System.Threading.Tasks.Extensions.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Threading.Tasks.Parallel.dll",
+      "path": "./runtimes/csharp/System.Threading.Tasks.Parallel.dll",
+      "size": 61264
+    },
+    {
+      "name": "System.Threading.Tasks.dll",
+      "path": "./runtimes/csharp/System.Threading.Tasks.dll",
+      "size": 16680
+    },
+    {
+      "name": "System.Threading.Thread.dll",
+      "path": "./runtimes/csharp/System.Threading.Thread.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Threading.ThreadPool.dll",
+      "path": "./runtimes/csharp/System.Threading.ThreadPool.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Threading.Timer.dll",
+      "path": "./runtimes/csharp/System.Threading.Timer.dll",
+      "size": 15184
+    },
+    {
+      "name": "System.Threading.dll",
+      "path": "./runtimes/csharp/System.Threading.dll",
+      "size": 44840
+    },
+    {
+      "name": "System.Transactions.Local.dll",
+      "path": "./runtimes/csharp/System.Transactions.Local.dll",
+      "size": 175912
+    },
+    {
+      "name": "System.Transactions.dll",
+      "path": "./runtimes/csharp/System.Transactions.dll",
+      "size": 16680
+    },
+    {
+      "name": "System.ValueTuple.dll",
+      "path": "./runtimes/csharp/System.ValueTuple.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Web.HttpUtility.dll",
+      "path": "./runtimes/csharp/System.Web.HttpUtility.dll",
+      "size": 29992
+    },
+    {
+      "name": "System.Web.dll",
+      "path": "./runtimes/csharp/System.Web.dll",
+      "size": 15144
+    },
+    {
+      "name": "System.Windows.dll",
+      "path": "./runtimes/csharp/System.Windows.dll",
+      "size": 15696
+    },
+    {
+      "name": "System.Xml.Linq.dll",
+      "path": "./runtimes/csharp/System.Xml.Linq.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Xml.ReaderWriter.dll",
+      "path": "./runtimes/csharp/System.Xml.ReaderWriter.dll",
+      "size": 21840
+    },
+    {
+      "name": "System.Xml.Serialization.dll",
+      "path": "./runtimes/csharp/System.Xml.Serialization.dll",
+      "size": 16208
+    },
+    {
+      "name": "System.Xml.XDocument.dll",
+      "path": "./runtimes/csharp/System.Xml.XDocument.dll",
+      "size": 15696
+    },
+    {
+      "name": "System.Xml.XPath.XDocument.dll",
+      "path": "./runtimes/csharp/System.Xml.XPath.XDocument.dll",
+      "size": 16168
+    },
+    {
+      "name": "System.Xml.XPath.dll",
+      "path": "./runtimes/csharp/System.Xml.XPath.dll",
+      "size": 15656
+    },
+    {
+      "name": "System.Xml.XmlDocument.dll",
+      "path": "./runtimes/csharp/System.Xml.XmlDocument.dll",
+      "size": 15696
+    },
+    {
+      "name": "System.Xml.XmlSerializer.dll",
+      "path": "./runtimes/csharp/System.Xml.XmlSerializer.dll",
+      "size": 17744
+    },
+    {
+      "name": "System.Xml.dll",
+      "path": "./runtimes/csharp/System.Xml.dll",
+      "size": 23336
+    },
+    {
+      "name": "System.dll",
+      "path": "./runtimes/csharp/System.dll",
+      "size": 49960
+    },
+    {
+      "name": "WindowsBase.dll",
+      "path": "./runtimes/csharp/WindowsBase.dll",
+      "size": 16208
+    },
+    {
+      "name": "dotnet.boot.js",
+      "path": "./runtimes/csharp/dotnet.boot.js",
+      "size": 42723
+    },
+    {
+      "name": "dotnet.js",
+      "path": "./runtimes/csharp/dotnet.js",
+      "size": 37898
+    },
+    {
+      "name": "dotnet.native.js",
+      "path": "./runtimes/csharp/dotnet.native.js",
+      "size": 145050
+    },
+    {
+      "name": "dotnet.native.js.symbols",
+      "path": "./runtimes/csharp/dotnet.native.js.symbols",
+      "size": 484406
+    },
+    {
+      "name": "dotnet.native.wasm",
+      "path": "./runtimes/csharp/dotnet.native.wasm",
+      "size": 3001776
+    },
+    {
+      "name": "dotnet.runtime.js",
+      "path": "./runtimes/csharp/dotnet.runtime.js",
+      "size": 198480
+    },
+    {
+      "name": "icudt_CJK.dat",
+      "path": "./runtimes/csharp/icudt_CJK.dat",
+      "size": 956416
+    },
+    {
+      "name": "icudt_EFIGS.dat",
+      "path": "./runtimes/csharp/icudt_EFIGS.dat",
+      "size": 550832
+    },
+    {
+      "name": "icudt_no_CJK.dat",
+      "path": "./runtimes/csharp/icudt_no_CJK.dat",
+      "size": 1107168
+    },
+    {
+      "name": "mscorlib.dll",
+      "path": "./runtimes/csharp/mscorlib.dll",
+      "size": 59688
+    },
+    {
+      "name": "netstandard.dll",
+      "path": "./runtimes/csharp/netstandard.dll",
+      "size": 100648
+    },
+    {
+      "name": "references.json",
+      "path": "./runtimes/csharp/references.json",
+      "size": 230
+    },
+    {
+      "name": "csharp-api.txt",
+      "path": "./csharp-api.txt",
+      "size": 1950
+    }
+  ]
+}

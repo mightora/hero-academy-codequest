@@ -1,0 +1,4 @@
+{
+  "checks": 14,
+  "environment": "LinkeDOM DOM integration; no visual layout, native keyboard, CSP or physical device assertions"
+}

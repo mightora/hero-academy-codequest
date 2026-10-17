@@ -1,0 +1,25 @@
+// Supplied by the Academy. Compiled alongside your editable code.
+public static class Game
+{
+    static string Send(string op, params object[] args) => QuestRuntime.Command(op, System.Text.Json.JsonSerializer.Serialize(args));
+    public static void Move(string direction) => Send("move", direction);
+    public static void Robot(string name, int energy, bool ready) => Send("robot", name, energy, ready);
+    public static void Supply(int amount) => Send("supply", amount);
+    public static void Gate(bool ready) => Send("gate", ready);
+    public static void Route(string destination) => Send("route", destination);
+    public static void Water(int plant) => Send("water", plant);
+    public static void Light(int light) => Send("light", light);
+    public static void Charge(int cells) => Send("charge", cells);
+    public static void Repair(string place) => Send("repair", place);
+    public static void Deliver(string item) => Send("deliver", item);
+    public static void Lift(int floor, bool ready) => Send("lift", floor, ready);
+    public static void Store(int power) => Send("store", power);
+    public static void Collect() => Send("collect");
+    public static int Energy() => int.Parse(Send("__sense", "energy"));
+    public static int Needed() => int.Parse(Send("__sense", "needed"));
+    public static int Count() => int.Parse(Send("__sense", "count"));
+    public static string Sensor() => System.Text.Json.JsonSerializer.Deserialize<string>(Send("__sense", "sensor"))!;
+    public static string Destination() => System.Text.Json.JsonSerializer.Deserialize<string>(Send("__sense", "destination"))!;
+    public static string[] DeliveryList() { QuestRuntime.Trace("list");return System.Text.Json.JsonSerializer.Deserialize<string[]>(Send("__sense", "delivery_list"))!; }
+    public static string[] District() { QuestRuntime.Trace("list");return System.Text.Json.JsonSerializer.Deserialize<string[]>(Send("__sense", "district"))!; }
+}

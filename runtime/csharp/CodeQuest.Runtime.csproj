@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RuntimeFrameworkVersion>10.0.13</RuntimeFrameworkVersion>
+    <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
+    <OutputType>Exe</OutputType>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <WasmMainJSPath>main.js</WasmMainJSPath>
+    <WasmEnableWebcil>false</WasmEnableWebcil>
+    <WasmBuildNative>false</WasmBuildNative>
+    <PublishTrimmed>false</PublishTrimmed>
+    <InvariantGlobalization>false</InvariantGlobalization>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
+  </ItemGroup>
+  <UsingTask TaskName="Microsoft.WebAssembly.Build.Tasks.WasmAppBuilder" AssemblyFile="$(NetCoreRoot)packs/Microsoft.NET.Runtime.WebAssembly.Sdk/10.0.0/tasks/net10.0/WasmAppBuilder.dll" Override="true" Condition="'$(CodeQuestInProcessTasks)' == 'true'" />
+</Project>

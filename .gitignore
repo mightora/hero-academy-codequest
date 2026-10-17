@@ -1,0 +1,9 @@
+node_modules/
+runtime/csharp/bin/
+runtime/csharp/obj/
+runtime/publish/
+.openai/local/
+*.tar.gz
+*.zip
+
+!dist/runtimes/python/python_stdlib.zip

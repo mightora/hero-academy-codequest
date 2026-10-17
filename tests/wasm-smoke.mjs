@@ -1,0 +1,18 @@
+import {readFile} from 'node:fs/promises';
+import {performance} from 'node:perf_hooks';
+import {dotnet} from '../dist/runtimes/csharp/dotnet.js';
+import {makeBridge} from '../dist/world.js';
+import {challenge} from '../dist/levels.js';
+const start=performance.now();
+let bridge=makeBridge(challenge('C11'));let output='';
+const runtime=await dotnet.create();
+runtime.setModuleImports('codequest',{dispatch(op,json){const a=JSON.parse(json);if(op==='__trace'){bridge.trace(a[0]);return '';}if(op==='__sense')return JSON.stringify(bridge.sense(a[0]));if(op==='__phase'){console.log('phase',a[0]);return '';}if(op==='__output'){output+=a[0]+'\n';bridge.command('message',[a[0]]);return '';}bridge.command(op,a);return '';}});
+const exports=await runtime.getAssemblyExports('CodeQuest.Runtime.dll');
+const names=['System.Private.CoreLib','System.Runtime','System.Console','System.Collections','System.Linq','System.Linq.Expressions','System.Memory','netstandard','System.Text.Json','CodeQuest.Runtime'];
+const refs=await Promise.all(names.map(n=>readFile(new URL('../dist/runtimes/csharp/'+n+'.dll',import.meta.url)).then(x=>x.toString('base64'))));
+console.log(exports.QuestRuntime.Init(JSON.stringify(refs)));
+console.log('startup ms',Math.round(performance.now()-start));
+const api=await readFile(new URL('../dist/csharp-api.txt',import.meta.url),'utf8');
+let s=performance.now();
+console.log('RESULT',exports.QuestRuntime.Execute('Console.WriteLine("Hello, Academy!");',api));
+console.log('execution ms',Math.round(performance.now()-s),'output',output,bridge.result());
