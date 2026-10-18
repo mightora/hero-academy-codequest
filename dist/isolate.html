@@ -19,7 +19,9 @@
       assetURLs[name]=URL.createObjectURL(new Blob([source],{type:'text/javascript'}));
      }
      const url=URL.createObjectURL(new Blob([m.workerSource],{type:'text/javascript'}));
-     worker=new Worker(url,{type:'module',name:'CodeQuest isolated runtime'});
+     // A module worker cannot fetch its bootstrap from an opaque origin in
+     // Chromium. The bootstrap is a classic script; engines still use import().
+     worker=new Worker(url,{type:'classic',name:'CodeQuest isolated runtime'});
      worker.onmessage=e=>port.postMessage(e.data);
      worker.onerror=e=>port.postMessage({type:'error',error:e.message||'The language could not start on this browser.'});
      worker.postMessage({type:'boot',language:m.language,assets:m.assets,assetURLs});
