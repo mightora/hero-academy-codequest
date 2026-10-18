@@ -1,7 +1,8 @@
 import {LEVELS,PATHS,challenge,levelById,nextLevel,sandbox} from './levels.js';
 import {createWorld,applyCommand,assess,LIMITS,featureName} from './world.js';
 import {runBlocks,pseudocode,BLOCK_LABELS} from './blocks.js';
-import {Profiles,progress,recommend,validateBackup,BACKUP_MAX} from './profiles.js';
+import {Profiles,progress,recommend,validateBackup,BACKUP_MAX,newProfile} from './profiles.js';
+import {bootAcademy} from './academy-client.js';
 import {RuntimeHost,friendlyError} from './runtime-host.js';
 import {icon,esc,atlas,MARKERS,worldSvg} from './scenery.js';
 import {hero,robot} from './art.js';
@@ -187,3 +188,12 @@ dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoun
 window.addEventListener('pagehide',()=>{save();host?.stop();gameCleanup?.();});
 matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',applySettings);
 render();
+await bootAcademy({
+ game:'codequest',identity:()=>profiles.current.id,
+ select:id=>{if(!profiles.data.players.some(p=>p.id===id))return false;profiles.switch(id);path=profiles.current.lastPath;selected=recommend(profiles.current);screen='map';render();return true;},
+ create:hero=>{if(profiles.data.players.length>=20)throw Error('Export a backup before adding another hero to this device.');const p=newProfile(hero.name);p.appearance.suit=hero.colour.toUpperCase();p.appearance.emblem=hero.emblem;const d=copy(profiles.data);d.players.push(p);d.active=p.id;profiles.restore(d);path=profiles.current.lastPath;selected=recommend(profiles.current);screen='map';render();return p.id;},
+ snapshot:()=>{save();return {...profiles.current,practice:profiles.current.practice.slice(-300)};},
+ restore:remote=>{cleanup();const d=copy(profiles.data),id=profiles.current.id;d.players[d.players.findIndex(p=>p.id===id)]={...remote,id};profiles.restore(d);path=profiles.current.lastPath;selected=recommend(profiles.current);screen='map';render();},
+ milestones:()=>LEVELS.map((l,i)=>profiles.current.completed[l.id]?i:null).filter(i=>i!==null)
+});
+
