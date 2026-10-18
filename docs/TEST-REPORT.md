@@ -1,8 +1,8 @@
 # CodeQuest verification report
 
-Initial suites: 17 October 2026. Runtime startup fix and live Chrome verification: 18 October 2026.
+Initial suites: 17 October 2026. Runtime startup fix, guided-lesson tests and live Chrome runtime verification: 18 October 2026.
 
-**Implemented and automatically tested:** all 30 missions, all 120 worked variants, both editable-source language engines, game-action generation, core player state, backups and the main DOM flows.
+**Implemented and automatically tested:** all 30 missions, all 120 worked variants, 30 concept lessons with 90 explained quick checks, both editable-source language engines, game-action generation, core player state, backwards-compatible backups and the main DOM flows.
 
 **Live Chrome verification, 18 October:** reproduced the toolkit startup failure on `https://codequest.heroacademy.app/`. A classic bootstrap alone still stalled on opaque-origin module imports. Bundled, language-specific classic workers resolved the failure without changing the iframe sandbox or network CSP. Edited C# `Console.WriteLine` and Python `print` programs both produced their actual output and a visible beacon action. Stop interrupted an actively running C# `while (true)` loop and the page remained usable. The bundled workers also pass the host, final-mission, isolation-probe and infinite-loop tests in the Node harness; these now run in deployment CI.
 
@@ -12,14 +12,15 @@ Initial suites: 17 October 2026. Runtime startup fix and live Chrome verificatio
 
 | Suite | Passed checks | What ran |
 | --- | ---: | --- |
-| Core curriculum/state/game tests | 51 | All 40 foundation variants, alternative route, missing repetition evidence, command validation/limits, player isolation, backup round-trip and rejection cases, reward/support separation, memory timeout and trail solvability |
+| Core curriculum/state/game/lesson tests | 58 | All 40 foundation variants, alternative route, missing repetition evidence, command validation/limits, player isolation, backup round-trip and rejection cases, reward/support separation, memory timeout, trail solvability, all 30 lessons/90 explained checks, varied answer order, old-save migration and isolated learning state |
 | CPython WebAssembly | 47 | All 40 Python variants, four different correct solutions, syntax error, dead-code loop evidence rejection and output limit |
 | .NET WebAssembly + Roslyn | 49 | All 40 C# variants, six different correct solutions including an expression-bodied method, syntax error, dead-code loop evidence rejection and output limit |
 | DOM integration | 14 | All mission/path selectors, foundation completion, Back cancelling a transition, nested blocks, Step, Reset preserving code, saved C# editing, player switching, backup export/import UI, memory board, branching screen and sandbox choices |
+| Guided learning DOM integration | 125 | All 30 introductions, all 90 checks, tailored wrong-answer/reveal feedback, final-mission entry, no runtime loading on lesson screens, opt-in speech/Stop controls with a stub speech engine, retained check position, hero isolation, saved final code and parent progress table |
 | RuntimeHost/isolated-frame integration with Node worker adapters | 7 | Actual host and iframe bootstrap, both edited-source programs and output, infinite loops, Stop reaching worker termination, responsive host heartbeat and automatic execution deadline |
-| Browser-loader branch harness | Additional checks for both languages | The vendor browser loader branches, final missions, no page/profile globals, blocked external fetch, infinite-loop termination and responsive host heartbeat |
+| Browser-loader branch harness | Additional checks for both languages | All 20 real Python/C# teaching examples and their exact outputs, the vendor browser loader branches, final missions, no page/profile globals, blocked external fetch, infinite-loop termination and responsive host heartbeat |
 
-The five numbered suites total **168 passing checks**. The browser-loader harness adds checks that are recorded by language rather than a single count. All 120 worked mission variants are included in the first three suites.
+The six counted suites total **300 passing checks**. The browser-loader harness adds checks recorded by language rather than a single count, including ten teaching examples per language. All 120 worked mission variants are included in the first three suites. These suites and static checks run before GitHub Pages deployment.
 
 `npm run check` also parses the JavaScript and CSS; checks all challenge definitions, static runtime asset existence/size, manifest drift and declared accessibility configuration; and verifies that each static asset is below 25 MiB. The SVG map, original characters and representative world states were rendered with Inkscape and visually inspected. That is artwork inspection, not an HTML layout screenshot.
 
@@ -32,7 +33,7 @@ The delivered engines report:
 
 The C# tests pass edited source into Roslyn, compile a new assembly and invoke it under WebAssembly. C20 constructs and uses an editable `Robot` class. A precompiled application-only approach is not used. Python goes through the real CPython parser and compiler. Different programs, identifiers and expressions produce correct world actions.
 
-Latest recorded container timings:
+Reference container timings from the runtime startup verification:
 
 | Measurement | Python | C# |
 | --- | ---: | ---: |
@@ -58,6 +59,9 @@ Generated machine-readable results are in:
 - Reset constructs a fresh world and preserves the saved program.
 - A player switch does not reveal the previous hero's code, completion, points, settings or appearance.
 - Export/import restores all players, code, variant/help state, appearance and settings. Malformed, oversized, duplicate-player and unknown-block backups are rejected.
+- Lesson/check state is saved per hero without changing mission points or completion. Version-1 backups without lesson data keep their old code and rewards. Malformed lesson/check records are rejected.
+- All 90 quick checks have a prediction/completion/debugging task and an explanation for every choice. Incorrect answers keep Next disabled; a correct or revealed answer allows it. Reveals remain labelled as assisted.
+- Reviewing a lesson preserves final code and current check position. Exploring the final mission early does not pass checks. Teaching screens do not trigger the heavyweight language download.
 - A correct outcome without the required loop is not a repetition completion. A loop inside dead code does not supply loop evidence.
 - Different correct route/program/calculation/method solutions are accepted.
 - Unmatched memory cards schedule their flip-back for exactly **3,000 ms**, and activity disposal clears the timer.
@@ -79,5 +83,6 @@ Before presenting this as a device-verified release, exercise the deployed stati
 6. Try adjacent press-and-hold movement, movement tracks, glider gaps, all memory pairs and the three-second mismatch delay. Confirm double-tapping controls does not zoom, while normal page zoom remains available.
 7. Complete a mission/activity and use Back during each celebration. Confirm no late navigation happens.
 8. Export a real downloaded backup, reload the browser, import that file and compare both players.
+9. Read representative lessons, answer a check incorrectly, review the idea, ask Pip for help, return to saved final code and test Hear/Stop voice with the actual device speech engine. Inspect the new lesson and check layouts at the same widths and text settings.
 
 These are outstanding verification items, not claims that an unfinished language parser or placeholder level is complete. The implementation uses the real engines and complete mission definitions; browser/device compatibility still needs direct validation.

@@ -7,7 +7,7 @@ const isObject=x=>!!x&&typeof x==='object'&&!Array.isArray(x);
 const bounded=(x,max)=>Number.isInteger(x)&&x>=0&&x<=max;
 const cleanText=(s,n)=>typeof s==='string'&&s.length<=n&&!/[\u0000-\u0008\u000b-\u001f]/.test(s);
 export function newProfile(name='Signal Scout'){
- return {id:crypto.randomUUID(),name:name.trim().slice(0,24)||'Signal Scout',points:0,collectibles:[],completed:{},saved:{},rewards:[],practice:[],appearance:{suit:suit[0],emblem:'star',cape:true},settings:{largeText:false,reducedMotion:false},lastPath:'foundation'};
+ return {id:crypto.randomUUID(),name:name.trim().slice(0,24)||'Signal Scout',points:0,collectibles:[],completed:{},saved:{},learning:{},rewards:[],practice:[],appearance:{suit:suit[0],emblem:'star',cape:true},settings:{largeText:false,reducedMotion:false},lastPath:'foundation'};
 }
 export function initialData(){const p=newProfile();return {format:'hero-academy-codequest',version:1,active:p.id,players:[p]};}
 function validateBlocks(nodes,depth=0){
@@ -22,6 +22,19 @@ export function validateBackup(input){
  const seen=new Set(),players=input.players.map(p=>{
   if(!isObject(p)||!cleanText(p.id,64)||!/^[\w-]+$/.test(p.id)||seen.has(p.id)||!cleanText(p.name,24)||!p.name.trim()||!bounded(p.points,1e9))throw Error('The backup has an invalid player.');seen.add(p.id);
   const o={id:p.id,name:p.name,points:p.points,appearance:{suit:suit.includes(p.appearance?.suit)?p.appearance.suit:suit[0],emblem:emblems.includes(p.appearance?.emblem)?p.appearance.emblem:'star',cape:p.appearance?.cape!==false},settings:{largeText:p.settings?.largeText===true,reducedMotion:p.settings?.reducedMotion===true},lastPath:['foundation','python','csharp'].includes(p.lastPath)?p.lastPath:'foundation',collectibles:[],rewards:[],completed:{},saved:{},practice:[]};
+  o.learning={};
+  if(p.learning!==undefined){
+   if(!isObject(p.learning)||Object.keys(p.learning).length>30)throw Error('The backup has invalid lesson progress.');
+   for(const [id,l] of Object.entries(p.learning)){
+    if(!ids.has(id)||!isObject(l)||!['learn','check','challenge'].includes(l.stage)||!bounded(l.index,2)||typeof l.introduced!=='boolean'||!isObject(l.answers)||Object.keys(l.answers).length>3)throw Error('The backup has invalid lesson progress.');
+    const record={stage:l.stage,index:l.index,introduced:l.introduced,answers:{}};
+    for(const [key,a] of Object.entries(l.answers)){
+     if(!['predict','complete','debug'].includes(key)||!isObject(a)||!bounded(a.attempts,10000)||a.attempts<1||!bounded(a.choice,2)||typeof a.solved!=='boolean'||typeof a.assisted!=='boolean')throw Error('The backup has an invalid quick-check record.');
+     record.answers[key]={attempts:a.attempts,choice:a.choice,solved:a.solved,assisted:a.assisted};
+    }
+    o.learning[id]=record;
+   }
+  }
   for(const field of ['collectibles','rewards']){if(!Array.isArray(p[field])||p[field].length>2000||!p[field].every(x=>cleanText(x,100)))throw Error('The backup has invalid rewards.');o[field]=[...new Set(p[field])];}
   if(!isObject(p.completed)||!isObject(p.saved)||!Array.isArray(p.practice)||p.practice.length>1000)throw Error('The backup has invalid progress.');
   for(const [id,r] of Object.entries(p.completed)){if(!ids.has(id)||!isObject(r)||!['independent','hints','example'].includes(r.support)||!bounded(r.variant,3)||!bounded(r.at,9e15))throw Error('The backup has an invalid completion record.');o.completed[id]={support:r.support,variant:r.variant,at:r.at};}
@@ -43,6 +56,11 @@ export class Profiles {
  add(name){return this.update((_,d)=>{if(d.players.length>=20)throw Error('This device already has 20 heroes. Export a backup to keep them safe.');const p=newProfile(name);d.players.push(p);d.active=p.id;});}
  switch(id){if(!this.data.players.some(p=>p.id===id))return false;return this.update((_,d)=>d.active=id);}
  save(level,saved){return this.update(p=>p.saved[level]=copy(saved));}
+ lesson(level,change){if(!ids.has(level))throw Error('Unknown lesson.');return this.update(p=>{p.learning[level]??={stage:'learn',index:0,introduced:false,answers:{}};change(p.learning[level]);});}
+ answer(level,check,choice,correct,assisted=false){
+  if(!['predict','complete','debug'].includes(check)||!bounded(choice,2)||typeof correct!=='boolean')throw Error('Unknown quick check.');
+  return this.lesson(level,l=>{const old=l.answers[check];if(old?.solved)return;l.stage='check';l.answers[check]={attempts:Math.min(10000,(old?.attempts??0)+1),choice,solved:correct,assisted:assisted||old?.assisted===true};});
+ }
  reward(key,points,collectible){return this.update(p=>{if(!p.rewards.includes(key)){p.rewards.push(key);p.points+=points;if(collectible&&!p.collectibles.includes(collectible))p.collectibles.push(collectible);}});}
  record(level,variant,result,support){return this.update(p=>{p.practice.push({level,variant,at:Date.now(),complete:result.complete,goal:result.goal,concept:!result.missing?.length,support});p.practice=p.practice.slice(-1000);if(result.complete&&ids.has(level)){const old=p.completed[level],rank={independent:0,hints:1,example:2};if(!old||rank[support]<rank[old.support])p.completed[level]={variant,support,at:Date.now()};const key=`${level}:${variant}`;if(!p.rewards.includes(key)){p.rewards.push(key);p.points+=old?25:100;if(!p.collectibles.includes(level))p.collectibles.push(level);}}});}
  export(){return JSON.stringify({...this.data,exportedAt:new Date().toISOString()},null,2);}

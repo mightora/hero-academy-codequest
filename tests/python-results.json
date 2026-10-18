@@ -1,6 +1,6 @@
 {
   "runtime": "3.14.2 (main, Sep 14 2026, 03:03:51) [Clang 23.0.0git (https:/github.com/llvm/llvm-project e5927fecf8a6ce89e1a4eac5b8",
-  "startupMs": 1838,
+  "startupMs": 1627,
   "checks": 47,
   "environment": "Node.js CPython WebAssembly; not a browser or physical iPhone"
 }

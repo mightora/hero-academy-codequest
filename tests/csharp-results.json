@@ -1,7 +1,7 @@
 {
   "version": ".NET 10.0.13; Roslyn 4.14.0.0; C# 13",
-  "startupMs": 525,
-  "firstCompileAndRunMs": 1511,
+  "startupMs": 479,
+  "firstCompileAndRunMs": 1285,
   "checks": 49,
   "environment": "Node.js .NET WebAssembly + Roslyn; not a browser or physical iPhone"
 }

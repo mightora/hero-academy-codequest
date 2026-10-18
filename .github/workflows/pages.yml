@@ -23,7 +23,7 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npm test && npm run check && npm run test:runtime
+      - run: npm test && npm run check && node tests/dom-ui.mjs && node tests/learning-ui.mjs && npm run test:runtime && node tests/python-wasm.mjs && node tests/csharp-wasm.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -11,7 +11,8 @@ const originalFetch=globalThis.fetch;
 globalThis.fetch=(_url,options)=>new Promise((_,reject)=>{options?.signal?.addEventListener('abort',()=>reject(Error('Aborted')),{once:true});});
 URL.createObjectURL=blob=>{exported=blob;return 'blob:test-backup';};URL.revokeObjectURL=()=>{};
 await import('../dist/app.js');
-const find=s=>{const e=document.querySelector(s);assert.ok(e,'Missing '+s);return e;},click=s=>find(s).click(),tick=()=>new Promise(resolve=>queueMicrotask(resolve));
+// These checks exercise the final editors; the guided stages have their own suite.
+const find=s=>{const e=document.querySelector(s);assert.ok(e,'Missing '+s);return e;},click=s=>{find(s).click();if(s.startsWith('[data-action="level"]')&&document.querySelector('.learning-intro'))find('[data-action="lesson-final"]').click();},tick=()=>new Promise(resolve=>queueMicrotask(resolve));
 let checks=0;
 assert.match(document.body.textContent,/The islands need a hero/);assert.equal(document.querySelectorAll('.mission-card').length,10);checks++;
 for(const path of ['python','csharp','foundation']){click(`[data-action="path"][data-path="${path}"]`);assert.equal(document.querySelectorAll('.mission-card').length,10);assert.equal(document.querySelectorAll('.map-marker').length,10);checks++;}

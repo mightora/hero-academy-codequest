@@ -2,17 +2,19 @@
   {
     "language": "python",
     "version": "Python 3.14.2 · Pyodide 314.0.7",
-    "browserBranchStartupMs": 1744,
-    "stopMs": 13,
+    "browserBranchStartupMs": 1721,
+    "stopMs": 18,
     "hostResponsive": true,
+    "teachingExamples": 10,
     "environment": "Node VM browser-branch worker harness; CSP enforcement and real browsers untested"
   },
   {
     "language": "csharp",
     "version": ".NET 10.0.13; Roslyn 4.14.0.0; C# 13",
-    "browserBranchStartupMs": 2211,
-    "stopMs": 13,
+    "browserBranchStartupMs": 2098,
+    "stopMs": 12,
     "hostResponsive": true,
+    "teachingExamples": 10,
     "environment": "Node VM browser-branch worker harness; CSP enforcement and real browsers untested"
   }
 ]

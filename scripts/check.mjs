@@ -6,7 +6,7 @@ import * as css from 'css-tree';
 import {LEVELS,challenge} from '../dist/levels.js';
 const root=resolve(import.meta.dirname,'..'),dist=join(root,'dist');
 for(const file of await readdir(dist))if(file.endsWith('.js')){const r=spawnSync(process.execPath,['--check',join(dist,file)],{encoding:'utf8'});assert.equal(r.status,0,file+': '+r.stderr);}
-const errors=[];css.parse(await readFile(join(dist,'style.css'),'utf8'),{onParseError:e=>errors.push(e.formattedMessage)});assert.deepEqual(errors,[]);
+const errors=[];for(const sheet of ['style.css','learning.css'])css.parse(await readFile(join(dist,sheet),'utf8'),{onParseError:e=>errors.push(e.formattedMessage)});assert.deepEqual(errors,[]);
 const html=await readFile(join(dist,'index.html'),'utf8'),isolate=await readFile(join(dist,'isolate.html'),'utf8');assert.ok(html.includes('viewport-fit=cover'));assert.ok(!html.includes('user-scalable=no'));assert.ok(isolate.includes("connect-src 'none'"));assert.ok(!isolate.includes('allow-same-origin'));assert.ok(!isolate.includes("'unsafe-eval'"));
 const manifest=JSON.parse(await readFile(join(dist,'runtime-manifest.json'),'utf8'));
 for(const files of Object.values(manifest))for(const item of files){const size=(await stat(resolve(dist,item.path))).size;assert.equal(size,item.size,'Manifest size drift: '+item.path);assert.ok(size<25*1024*1024,'Static asset too large: '+item.path);}

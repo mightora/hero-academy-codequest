@@ -5,6 +5,7 @@ An adventure about bringing an island world back to life with instructions and c
 ## What is implemented
 
 - **30 selectable coding missions:** F1–F10 foundations, P11–P20 Python and C11–C20 C#.
+- A teaching flow for every mission: a concept explanation, a worked example with its result, then three explained little tests before the final coding adventure (**90 checks** in total).
 - Four deterministic, solvable variants per mission. Routes, quantities, destinations, object positions or repair goals change.
 - Interactive island maps, a Python/C# branching screen and a sandbox for each path. Nothing is locked.
 - Tap and keyboard friendly instruction blocks with nesting, replacement, ordering and accurately labelled pseudocode.
@@ -12,7 +13,7 @@ An adventure about bringing an island world back to life with instructions and c
 - Editable **C# 13**, compiled by **Roslyn 4.14.0**, then executed by the **.NET 10.0.13 WebAssembly interpreter**. The compiler host is prebuilt; the child's program is compiled from the edited source on Run.
 - Run, Stop, Reset, Step through game actions, progressive hints, supplied examples and an accessible native text editor.
 - Star catching, robot trail exploration, memory matching and a glider course. These are additional play, not coding levels.
-- Named local heroes with separate code, progress, rewards, appearance, settings and practice records.
+- Named local heroes with separate code, lesson/check progress, rewards, appearance, settings and practice records. Older saves and backups remain compatible.
 - Validated export/import backups, large text, reduced motion and quiet play with speech only after Hear.
 
 ## Run or deploy
@@ -37,7 +38,15 @@ For GitHub Pages:
 
 The Python standard-library ZIP is deliberately tracked alongside the WebAssembly runtime. Source downloads use GitHub’s repository archive.
 
-The workflow tests the core and uploads `dist/`. Its asset paths also work under a repository subdirectory. Do not add `allow-same-origin` to the runtime iframe or relax its network policy to make a failing device load the runtime. Use the recovery controls and investigate the browser error.
+The workflow tests the core, guided learning screens and actual runtimes, then uploads `dist/`. Its asset paths also work under a repository subdirectory. Do not add `allow-same-origin` to the runtime iframe or relax its network policy to make a failing device load the runtime. Use the recovery controls and investigate the browser error.
+
+## Learn, practise, then create
+
+Each new mission opens **Learn the idea**. Pip explains the concept, connects it to the adventure and shows a small example alongside what happens. Foundation examples are picture-led pseudocode; Python and C# examples are real source programs.
+
+**Little tests** ask learners to predict an outcome, choose a missing piece and investigate a mistake. Every answer explains why, with unlimited retries and optional help from Pip. Solved checks, attempts and revealed answers are saved for each hero and included in backups. The Grown-ups table shows check progress separately from coding attempts and rewards.
+
+The **Final mission** remains an editable, executable challenge assessed by the existing world and concept checks. Learners can review the explanation without losing their code. Open exploration is preserved: jumping to the final mission never silently passes the little tests. Checks award no mission completion or reward points, and neither a passed check nor a completed mission certifies mastery.
 
 Other static hosts can serve `dist/` unchanged. Keep `.mjs` and `.js` responses as JavaScript and `.wasm` as `application/wasm`. Individual assets are below 25 MiB. Neither SharedArrayBuffer nor COOP/COEP response headers are required. If adding a host-level CSP, ensure the isolated HTML document retains the policy in `isolate.html`; an additional policy must not block its inline bootstrap, module Blobs or WebAssembly compilation.
 
@@ -62,6 +71,7 @@ npm run test:runtime
 node tests/python-wasm.mjs
 node tests/csharp-wasm.mjs
 node tests/dom-ui.mjs
+node tests/learning-ui.mjs
 node tests/worker-isolation.mjs
 node tests/host-integration.mjs
 ```

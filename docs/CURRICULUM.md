@@ -2,6 +2,19 @@
 
 All 30 missions are selectable from the beginning. The map recommends a next mission and First steps as a starting point, without blocking exploration. Completing F10 leads through an adventure break to the Python/C# choice; both paths remain switchable.
 
+## Teaching sequence
+
+Each mission has a dedicated lesson in `dist/lessons.js`, with the default flow **Learn the idea → Little tests → Final mission**:
+
+1. Define the concept in plain language and explain its purpose in the game.
+2. Show a small worked example, its expected output or action, and notes that explain how it works. Foundation examples are labelled pseudocode with picture cues. The 20 Python/C# examples execute in the actual language runtimes during testing.
+3. Offer three short checks: predict what happens, choose a missing step and investigate/debug a mistake. There are **90 checks** across the 30 missions. Each choice has a tailored explanation, including distractors. Answer order is shuffled deterministically per hero and mission.
+4. Apply the concept in the existing final adventure using editable blocks or code. The worked teaching example is deliberately smaller than the mission solution.
+
+Wrong answers allow retries without losing points. “Pip, show me” explains the correct answer and records that support. Check progress survives navigation, reloads, hero switches and validated backup round-trips; it does not replace saved final programs. Returning to the concept keeps the current check position. Speech is opt-in and has a Stop voice control.
+
+All stages remain available for exploration. Opening the final mission early does not mark its checks passed. The guided route waits for a solved or assisted answer before moving to the next check. Learning checks award neither mission completion nor game points, and the parent table distinguishes first-try answers, answers after feedback and revealed answers. These are practice signals, not mastery certificates or a tamper-proof exam.
+
 | Mission | Concept | Visible challenge |
 | --- | --- | --- |
 | F1 | Instructions | One movement to Pip's charger |
@@ -51,7 +64,7 @@ Hints progress through a picture clue, an explanation, a partial starting point 
 
 ## Player records and rewards
 
-Each player has separate foundation, Python and C# completion, code, appearance, settings, points, collectibles and practice history. Every attempted coding run can record outcome, whether the intended concept was evidenced, variant and support category. Best completion and original practice events are both retained.
+Each player has separate foundation, Python and C# completion, code, lesson stage, check attempts/help, appearance, settings, points, collectibles and practice history. Every attempted coding run can record outcome, whether the intended concept was evidenced, variant and support category. Best completion and original practice events are both retained. Version-1 backups without lesson records migrate to empty lesson progress without changing existing programs, rewards or completion.
 
 The first completed variant of a mission awards 100 points. Each additional variant awards 25 once. Optional treasures and activity keepsakes award separate game points. Repeating an already rewarded variant never deducts points. Worked examples can earn the same game rewards; their learning support is recorded separately.
 

@@ -3,7 +3,7 @@
   "results": [
     {
       "language": "python",
-      "stopAndDisposalMs": 201,
+      "stopAndDisposalMs": 200,
       "hostResponsive": true,
       "runAndOutputValidated": true
     },
