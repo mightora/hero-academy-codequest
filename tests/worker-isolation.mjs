@@ -6,7 +6,7 @@ import {challenge} from '../dist/levels.js';
 import {assess} from '../dist/world.js';
 const manifest=JSON.parse(await readFile(new URL('../dist/runtime-manifest.json',import.meta.url),'utf8'));
 async function boot(language){
- const worker=new Worker(new URL('./browser-worker-vm.mjs',import.meta.url),{execArgv:['--experimental-vm-modules','--disable-warning=ExperimentalWarning']});
+ const worker=new Worker(new URL('./browser-worker-vm.mjs',import.meta.url),{workerData:{bundled:true},execArgv:['--experimental-vm-modules','--disable-warning=ExperimentalWarning']});
  function until(type,timeout=60000){return new Promise((resolve,reject)=>{const timer=setTimeout(()=>{worker.terminate();reject(Error('Timeout waiting for '+type));},timeout);const listen=m=>{if(m.type===type||m.type==='error'){clearTimeout(timer);worker.off('message',listen);m.type==='error'?reject(Error(m.error)):resolve(m);}};worker.on('message',listen);worker.once('error',reject);});}
  await until('harness-ready');const assets=Object.fromEntries(await Promise.all(manifest[language].map(async a=>{const b=await readFile(new URL('../dist/'+a.path.slice(2),import.meta.url));return [a.name,b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength)];})));
  const started=performance.now(),ready=until('ready');worker.postMessage({type:'boot',language,assets});const r=await ready;

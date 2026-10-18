@@ -15,9 +15,10 @@ async function load(specifier){
  if(!blobs.has(specifier))throw Error('Non-Blob module rejected: '+specifier);
  const source=await blobs.get(specifier).text();const mod=new vm.SourceTextModule(source,{context,identifier:specifier,initializeImportMeta:meta=>meta.url=specifier,importModuleDynamically:async s=>{const m=await load(s);if(m.status==='unlinked')await m.link(load);if(m.status!=='evaluated')await m.evaluate();return m;}});modules.set(specifier,mod);await mod.link(load);await mod.evaluate();return mod;
 }
-const workerSource=(await readFile(new URL('../dist/runtime-worker.js',import.meta.url),'utf8')).replaceAll('String(error.message||error)', 'String(error.stack||error)');const root=new vm.SourceTextModule(workerSource,{context,identifier:'worker',importModuleDynamically:load});await root.link(load);await root.evaluate();
-parentPort.on('message',data=>{
+if(!workerData?.bundled){const workerSource=(await readFile(new URL('../dist/runtime-worker.js',import.meta.url),'utf8')).replaceAll('String(error.message||error)', 'String(error.stack||error)');const root=new vm.SourceTextModule(workerSource,{context,identifier:'worker',importModuleDynamically:load});await root.link(load);await root.evaluate();}
+parentPort.on('message',async data=>{
  if(data.type==='boot'){
+  if(workerData?.bundled){const script=await readFile(new URL(`../dist/runtime-worker-${data.language}.js`,import.meta.url),'utf8');vm.runInContext(script,context);}
   // Node threads do not share a browser's Blob URL store. Recreate the frame's
   // module URL store outside the VM before handing it to the worker context.
   const assetURLs={};

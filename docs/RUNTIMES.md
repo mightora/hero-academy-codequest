@@ -57,9 +57,9 @@ Step compiles/interprets the whole program first, then advances through the resu
 
 1. The host downloads only version-pinned local assets.
 2. It loads `isolate.html` as a real static document in `<iframe sandbox="allow-scripts">`, without `allow-same-origin`. `srcdoc` is avoided because inherited host CSP would block its bootstrap.
-3. The opaque document creates module Blob URLs and a dedicated module worker. It passes only engine assets and the selected challenge/program, not the local profile collection.
+3. The opaque document starts a classic Blob worker containing bundled engine modules. Browser module imports from opaque origins can fail or stall, so the bundle resolves engine imports from a fixed in-memory registry. It passes only engine assets and the selected challenge/program, not the local profile collection.
 4. The isolated document's CSP has `default-src 'none'`, `connect-src 'none'`, script Blobs and WebAssembly compilation only. It has no `unsafe-eval` permission. Tests run the vendor browser branches in a VM with JavaScript string code generation disabled.
-5. A worker-local byte provider fulfils only known virtual runtime-resource requests from memory. It does not make network requests. Module loading uses the frame-created Blob URLs. HTTP, WebSocket and other external connections are blocked by CSP in the browser, in addition to the fetch guard.
+5. A worker-local byte provider fulfils only known virtual runtime-resource requests from memory. It does not make network requests. Engine modules are compiled into separate Python/C# classic worker bundles by `npm run build`; builds reject external module imports. HTTP, WebSocket and other external connections are blocked by CSP in the browser, in addition to the fetch guard.
 6. A private MessageChannel carries only a bounded protocol. The page validates operation names, argument counts/types, ranges, lengths and returned action counts before replay.
 7. Stop tells the independently responsive iframe to call `worker.terminate()`, then closes the channel and removes the frame. Successful/error results also dispose of the worker. Each run therefore gets a fresh user environment and generated assemblies do not accumulate across runs.
 

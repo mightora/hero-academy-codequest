@@ -58,6 +58,7 @@ npm ci
 npm run build
 npm run check
 npm test
+npm run test:runtime
 node tests/python-wasm.mjs
 node tests/csharp-wasm.mjs
 node tests/dom-ui.mjs

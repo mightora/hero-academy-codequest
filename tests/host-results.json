@@ -9,11 +9,11 @@
     },
     {
       "language": "csharp",
-      "stopAndDisposalMs": 200,
+      "stopAndDisposalMs": 201,
       "hostResponsive": true,
       "runAndOutputValidated": true
     }
   ],
-  "watchdogMs": 5254,
+  "watchdogMs": 5256,
   "environment": "Node adapters execute real host, opaque-frame bootstrap, browser-branch workers; no actual browser CSP or device claims"
 }

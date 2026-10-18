@@ -11,16 +11,12 @@
    const m=e.data;
    if(m?.type==='boot'){
     try{
-     // Create module Blobs in the opaque document, rather than the worker.
-     // This avoids WebKit's known opaque-worker Blob reading problem (#258443).
-     const assetURLs={},decoder=new TextDecoder();
-     for(const [name,bytes] of Object.entries(m.assets))if(/\.(mjs|js)$/.test(name)){
-      const source=decoder.decode(bytes).replaceAll('import.meta.url',JSON.stringify('https://codequest.invalid/'+name));
-      assetURLs[name]=URL.createObjectURL(new Blob([source],{type:'text/javascript'}));
-     }
+     // Engine modules are already bundled into the classic worker. These names
+     // resolve only to its in-memory module registry, never to a network import.
+     const assetURLs=Object.fromEntries(Object.keys(m.assets).map(name=>[name,'https://codequest.invalid/'+name]));
      const url=URL.createObjectURL(new Blob([m.workerSource],{type:'text/javascript'}));
      // A module worker cannot fetch its bootstrap from an opaque origin in
-     // Chromium. The bootstrap is a classic script; engines still use import().
+     // Chromium. A classic bundle also avoids opaque-origin dynamic imports.
      worker=new Worker(url,{type:'classic',name:'CodeQuest isolated runtime'});
      worker.onmessage=e=>port.postMessage(e.data);
      worker.onerror=e=>port.postMessage({type:'error',error:e.message||'The language could not start on this browser.'});

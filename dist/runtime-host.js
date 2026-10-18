@@ -17,12 +17,12 @@ export class RuntimeHost{
     const data=await response.arrayBuffer();assetCache.set(item.path,data);loaded+=item.size;report(`Loading toolkit · ${Math.round(loaded/total*100)}%`,loaded/total);return [item.name,data];
    }
    await Promise.all(Array.from({length:Math.min(6,list.length)},async()=>{while(cursor<list.length){const i=cursor++;entries[i]=await download(list[i]);}}));
-   const workerSource=await fetch('./runtime-worker.js',{signal}).then(r=>r.text());
+   const workerSource=await fetch(`./runtime-worker-${language}.js?v=bundled-worker-1`,{signal}).then(r=>{if(!r.ok)throw Error('The toolkit loader could not be downloaded.');return r.text();});
    if(generation!==this.generation)throw Error('Stopped');
    const frame=document.createElement('iframe');frame.title='Isolated code execution';frame.setAttribute('sandbox','allow-scripts');frame.hidden=true;
    // A real document has its own restrictive CSP. srcdoc would inherit the host
    // page's CSP and incorrectly block the isolated bootstrap script.
-   frame.src=new URL('./isolate.html?v=classic-worker-1',import.meta.url).href;this.frame=frame;
+   frame.src=new URL('./isolate.html?v=bundled-worker-1',import.meta.url).href;this.frame=frame;
    const channel=new MessageChannel();this.port=channel.port1;this.port.start();
    await new Promise((resolve,reject)=>{
     this.rejectLoad=reject;

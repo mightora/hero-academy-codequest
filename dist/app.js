@@ -2,7 +2,7 @@ import {LEVELS,PATHS,challenge,levelById,nextLevel,sandbox} from './levels.js';
 import {createWorld,applyCommand,assess,LIMITS,featureName} from './world.js';
 import {runBlocks,pseudocode,BLOCK_LABELS} from './blocks.js';
 import {Profiles,progress,recommend,validateBackup,BACKUP_MAX} from './profiles.js';
-import {RuntimeHost,friendlyError} from './runtime-host.js?v=classic-worker-1';
+import {RuntimeHost,friendlyError} from './runtime-host.js?v=bundled-worker-1';
 import {icon,esc,atlas,MARKERS,worldSvg} from './scenery.js';
 import {hero,robot} from './art.js';
 import {ACTIVITIES,mountGame} from './games.js';
