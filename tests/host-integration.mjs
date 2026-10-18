@@ -10,7 +10,7 @@ import {assess} from '../dist/world.js';
 const html=await readFile(new URL('../dist/isolate.html',import.meta.url),'utf8'),bootstrap=html.match(/<script>([\s\S]*?)<\/script>/)[1];
 const workers=[];
 class WorkerAdapter{
- constructor(){this.queue=[];this.ready=false;this.node=new Worker(new URL('./browser-worker-vm.mjs',import.meta.url),{execArgv:['--experimental-vm-modules','--disable-warning=ExperimentalWarning']});workers.push(this);this.node.on('message',m=>{if(m.type==='harness-ready'){this.ready=true;for(const q of this.queue)this.node.postMessage(q);this.queue=[];}else this.onmessage?.({data:m});});this.node.on('error',e=>this.onerror?.(e));}
+ constructor(_url,options){assert.notEqual(options?.type,'module','An opaque-origin frame cannot bootstrap a module worker in Chromium');this.queue=[];this.ready=false;this.node=new Worker(new URL('./browser-worker-vm.mjs',import.meta.url),{execArgv:['--experimental-vm-modules','--disable-warning=ExperimentalWarning']});workers.push(this);this.node.on('message',m=>{if(m.type==='harness-ready'){this.ready=true;for(const q of this.queue)this.node.postMessage(q);this.queue=[];}else this.onmessage?.({data:m});});this.node.on('error',e=>this.onerror?.(e));}
  postMessage(m){if(this.ready)this.node.postMessage(m);else this.queue.push(m);}
  terminate(){this.terminated=true;this.termination=this.node.terminate();}
 }

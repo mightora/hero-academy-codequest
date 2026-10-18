@@ -22,7 +22,7 @@ export class RuntimeHost{
    const frame=document.createElement('iframe');frame.title='Isolated code execution';frame.setAttribute('sandbox','allow-scripts');frame.hidden=true;
    // A real document has its own restrictive CSP. srcdoc would inherit the host
    // page's CSP and incorrectly block the isolated bootstrap script.
-   frame.src=new URL('./isolate.html',import.meta.url).href;this.frame=frame;
+   frame.src=new URL('./isolate.html?v=classic-worker-1',import.meta.url).href;this.frame=frame;
    const channel=new MessageChannel();this.port=channel.port1;this.port.start();
    await new Promise((resolve,reject)=>{
     this.rejectLoad=reject;
