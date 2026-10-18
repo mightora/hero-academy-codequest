@@ -45,7 +45,7 @@ Other static hosts can serve `dist/` unchanged. Keep `.mjs` and `.js` responses 
 
 See [the test report](docs/TEST-REPORT.md) for exactly what ran. Automated checks execute actual Python and C# WebAssembly, all 120 worked variants, alternative solutions, errors, limits, Stop, backups and player separation. DOM integration tests exercise the menus and mission flows.
 
-**Actual browser interaction, rendered phone/tablet/desktop layouts and physical iPhone Safari were not tested in this environment.** The responsive rules and SVG artwork were checked, but that is not device certification. Test the private build on the intended devices before a classroom or public rollout.
+Live desktop Chrome startup and edited-source execution for both Python and C# were verified on 18 October 2026 after fixing opaque-origin worker/module loading. Stop also interrupted a running C# infinite loop in that browser. **Physical iPhone Safari, Android, rendered responsive layouts and full keyboard/accessibility behaviour remain unverified.** Test the game on the intended devices before a classroom rollout.
 
 The editor runs synchronous Academy game programs. Browser-compatible standard language features are available; this is not a desktop Python/.NET development environment. External packages, native libraries, OS integration and asynchronous C# entry points are outside the supported game workflow. Step replays game actions, not source statements. Browser workers have no portable hard RAM quota; extremely allocation-heavy code can exhaust a device even with time limits.
 

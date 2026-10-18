@@ -1,10 +1,12 @@
 # CodeQuest verification report
 
-Date: 17 October 2026.
+Initial suites: 17 October 2026. Runtime startup fix and live Chrome verification: 18 October 2026.
 
 **Implemented and automatically tested:** all 30 missions, all 120 worked variants, both editable-source language engines, game-action generation, core player state, backups and the main DOM flows.
 
-**Not verified here:** interaction in an actual browser; rendered phone, tablet and desktop layouts; native keyboard/focus behaviour; browser enforcement of the iframe/worker CSP; physical touch controls; and actual iPhone Safari. Responsive CSS and semantic controls have been implemented and checked as source, but those checks are not rendered-device tests. The supported preview/browser-control path was unavailable in this build environment. No claim of physical iPhone testing is made.
+**Live Chrome verification, 18 October:** reproduced the toolkit startup failure on `https://codequest.heroacademy.app/`. A classic bootstrap alone still stalled on opaque-origin module imports. Bundled, language-specific classic workers resolved the failure without changing the iframe sandbox or network CSP. Edited C# `Console.WriteLine` and Python `print` programs both produced their actual output and a visible beacon action. Stop interrupted an actively running C# `while (true)` loop and the page remained usable. The bundled workers also pass the host, final-mission, isolation-probe and infinite-loop tests in the Node harness; these now run in deployment CI.
+
+**Still not verified here:** rendered phone, tablet and desktop layouts; full native keyboard/focus behaviour; browser enforcement probes for every CSP restriction; physical touch controls; and actual iPhone Safari, Android and Firefox. The initial 17 October build had no browser testing; the follow-up above is a targeted Chrome runtime check, not device certification.
 
 ## Automated results
 

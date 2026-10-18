@@ -34,7 +34,7 @@ Primary references:
 
 `dist/runtime-manifest.json` is generated from the actual file sizes. The Python toolkit is about **13.54 MB**, and the C# toolkit about **38.31 MB**, before HTTP transfer compression. Those totals include the shared world module and language binding files. They do not imply an exact network transfer size: server compression and HTTP cache state matter. Foundations and mini-games do not download either engine.
 
-All engines are served from this site's own static directory. No profile, source code or command is sent to a compiler server. Six asset downloads run concurrently; progress reports completed bytes. Successful downloads are cached in memory for reuse during that page session, as well as any browser HTTP caching. Loading can be stopped, retried, or abandoned in favour of First steps.
+All engines are served from this site's own static directory. No profile, source code or command is sent to a compiler server. The manifest totals above exclude the classic worker bundle (approximately 1.6 MB for Python or 0.6 MB for C# before compression). Six asset downloads run concurrently; progress reports completed bytes. Successful downloads are cached in memory for reuse during that page session, as well as any browser HTTP caching. Loading can be stopped, retried, or abandoned in favour of First steps.
 
 Upstream licence texts and .NET third-party notices are included under `dist/licenses/`. The original upstream files are retained unchanged. Module instances have `import.meta.url` changed to an internal virtual URL during isolated loading so relative resource resolution works without a network origin. Upstream source is available at the linked release repositories:
 
