@@ -7,6 +7,7 @@ import {RuntimeHost,friendlyError} from './runtime-host.js?v=bundled-worker-1';
 import {icon,esc,atlas,MARKERS,worldSvg} from './scenery.js';
 import {hero,robot} from './art.js';
 import {ACTIVITIES,mountGame} from './games.js';
+import {bootAcademy} from './academy-client.js';
 
 const app=document.querySelector('#app'),dialog=document.querySelector('#dialog');
 const profiles=new Profiles();
@@ -232,3 +233,13 @@ dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoun
 window.addEventListener('pagehide',()=>{save();host?.stop();gameCleanup?.();});
 matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',applySettings);
 render();
+
+const academyAccount=await bootAcademy({
+ game:'codequest',identity:()=>profiles.current.id,
+ select:id=>{if(!profiles.data.players.some(p=>p.id===id))return false;save();cleanup();profiles.switch(id);path=profiles.current.lastPath;screen='map';dialog.close();render();return true;},
+ create:h=>{save();cleanup();profiles.add(h.name.slice(0,24));profiles.update(p=>{p.appearance.suit=h.colour.toUpperCase();p.appearance.emblem=h.emblem;});path=profiles.current.lastPath;screen='map';dialog.close();render();return profiles.current.id;},
+ snapshot:()=>{save();const profile=copy(profiles.current);profile.practice=profile.practice.slice(-300);return {format:'hero-academy-codequest',version:1,profile};},
+ restore:remote=>{const id=profiles.current.id;const safe=validateBackup({format:remote.format,version:remote.version,active:id,players:[{...remote.profile,id}]});cleanup();profiles.update((p,data)=>{data.players[data.players.findIndex(p=>p.id===id)]=safe.players[0];});path=profiles.current.lastPath;screen='map';dialog.close();render();},
+ milestones:()=>LEVELS.flatMap((l,i)=>profiles.current.completed[l.id]?[i]:[]),
+});
+
